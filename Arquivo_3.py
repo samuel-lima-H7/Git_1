@@ -8,16 +8,17 @@ sobra = ""
 
 while True:
     for c in range(len(cedulas)):
+        if sum(num) == entrada:
+            break
         print(f"Entrada {c}: {entrada}")
         if entrada >= cedulas[c]:
             divi = entrada // cedulas[c]
             print(f"Divisão {c}: {divi}")
 
-        num.append(divi)
+        num.append(divi*cedulas[c])
         print(f"Lista {c}: {num}")
         entrada -= divi * cedulas[c]
-        if sum(num) == entrada:
-            break
+
 
     break
 
