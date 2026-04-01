@@ -9,10 +9,13 @@ sobra = ""
 while True:
     for c in range(len(cedulas)):
         entrada -= divi * cedulas[c]
+        print(f"Entrada {c}: {entrada}")
         if entrada >= cedulas[c]:
             divi = entrada // cedulas[c]
+            print(f"Divisão {c}: {divi}")
 
         num.append(divi)
+        print(f"Lista {c}: {num}")
 
         if sum(num) == entrada:
             break
