@@ -2,9 +2,11 @@
 
 quant = int(input("Digite a quantidade de veiculos que deseja cadastrar: "))
 veiculos = list()
-Dados_veiculo = list()
+
+
 
 for c in range(quant):
+    Dados_veiculo = list()
     Veiculo = input("Digite o veiculo de registro: ")
     KM_rodados = float(input("Digite o numero de quilometros que o veiculo percorreu: "))
     Comb_usado = float(input("Digite a quantidade em litros de combustível usado: "))
@@ -14,5 +16,5 @@ for c in range(quant):
     Dados_veiculo.append(Comb_usado)
     Dados_veiculo.append(Temp_gasto)
     veiculos.append(Dados_veiculo)
-    Dados_veiculo.clear()
+
 
