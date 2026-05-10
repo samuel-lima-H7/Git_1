@@ -1,4 +1,4 @@
-#SISTEMA DE ANALISE DE DADOS PRA DEFINIR STATUS DE FUNCIOANAMENTO EM EMPRESA
+#SISTEMA DE ANALISE DE DADOS PRA DEFINIR STATUS DE FUNCIONAMENTO EM EMPRESA
 
 quant = int(input("Digite a quantidade de veiculos que deseja cadastrar: "))
 veiculos = list()
@@ -18,6 +18,15 @@ def armazenamento():
         dados_veiculo.append(comb_usado)
         dados_veiculo.append(temp_gasto)
         veiculos.append(dados_veiculo)
+
+def analise_repeticao():
+    repetido = 0
+    for r in range(len(veiculos)):
+        nome_atual = veiculos[r][0]
+        for v in range(len(veiculos)):
+            if nome_atual == veiculos[v][0]:
+                repetido += 1
+
 
 def analise_manutencao(val,b):
     if val[b][1] >= 5000.00:
