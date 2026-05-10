@@ -4,17 +4,40 @@ quant = int(input("Digite a quantidade de veiculos que deseja cadastrar: "))
 veiculos = list()
 
 
+def armazenamento():
+    for c in range(quant):
+        dados_veiculo = list()
+        veiculo = input("Digite o veiculo de registro: ")
+        km_rodados = float(input("Digite o numero de quilometros que o veiculo percorreu: "))
+        comb_usado = float(input("Digite a quantidade em litros de combustível usado: "))
+        temp_gasto = float(input("Digite o tempo em horas de viagem que o veiculo percorreu: "))
+        dados_veiculo.append(veiculo)
+        dados_veiculo.append(km_rodados)
+        dados_veiculo.append(comb_usado)
+        dados_veiculo.append(temp_gasto)
+        veiculos.append(dados_veiculo)
 
-for c in range(quant):
-    Dados_veiculo = list()
-    Veiculo = input("Digite o veiculo de registro: ")
-    KM_rodados = float(input("Digite o numero de quilometros que o veiculo percorreu: "))
-    Comb_usado = float(input("Digite a quantidade em litros de combustível usado: "))
-    Temp_gasto = float(input("Digite o tempo em horas de viagem que o veiculo percorreu: "))
-    Dados_veiculo.append(Veiculo)
-    Dados_veiculo.append(KM_rodados)
-    Dados_veiculo.append(Comb_usado)
-    Dados_veiculo.append(Temp_gasto)
-    veiculos.append(Dados_veiculo)
+
+def analise_manutencao(val,b):
+    if val[b][1] >= 5000.00:
+        return "Manutenção Necessária"
+    else:
+         return "Manutenção Ok"
+
+def analise_eficiencia(val, b):
+    km_por_litro = val[b][1] / val[b][2]
+    if km_por_litro >= 3.5:
+        return "Veiculo Eficiente"
+    else:
+        return "Veiculo NÃO Eficiente"
+
+
+
+
+
+
+
+
+
 
 
