@@ -44,16 +44,17 @@ def analise_eficiencia(val, b):
 
 repetido = 0
 for r in range(len(veiculos)):
-    lista_de_veiculos = list()
-    veiculos_copia = veiculos[:]
+
+    lista_de_veiculos = veiculos[:]
+    lista_de_veiculos.pop(r)
     nome_atual = veiculos[r][0]
+
+
+
     for v in range(len(lista_de_veiculos)):
-        print(lista_de_veiculos[v][0])
-        print(nome_atual)
         if nome_atual == lista_de_veiculos[v][0]:
             repetido += 1
             print(repetido)
-
 
 
 
