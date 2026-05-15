@@ -3,8 +3,6 @@
 quant = int(input("Digite a quantidade de veiculos que deseja cadastrar: "))
 veiculos = list()
 
-
-
 for c in range(quant):
     dados_veiculo = list()
     print("-="*20)
@@ -34,32 +32,27 @@ def analise_eficiencia(val, b):
     else:
         return "Veiculo NÃO Eficiente"
 
-'''for a in range(len(veiculos)):
-    print("-="*20)
-    print(f"O Veiculo {veiculos[a][0]:^20}")
-    print(analise_eficiencia(veiculos, a))
-    print(analise_manutencao(veiculos, a))
-'''
-
-
 repetido = 0
+repetido_list = list()
 for r in range(len(veiculos)):
 
     lista_de_veiculos = veiculos[:]
     lista_de_veiculos.pop(r)
     nome_atual = veiculos[r][0]
 
-
-
     for v in range(len(lista_de_veiculos)):
         if nome_atual == lista_de_veiculos[v][0]:
+            repetido_list.append(lista_de_veiculos[v])
             repetido += 1
             print(repetido)
+            print(repetido_list)
 
 
-
-
-
+for a in range(len(veiculos)):
+    print("-="*20)
+    print(f"O Veiculo {veiculos[a][0]:^20}")
+    print(analise_eficiencia(veiculos, a))
+    print(analise_manutencao(veiculos, a))
 
 
 
