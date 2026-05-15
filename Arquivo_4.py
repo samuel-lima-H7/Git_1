@@ -19,17 +19,7 @@ for c in range(quant):
     dados_veiculo.append(temp_gasto)
     veiculos.append(dados_veiculo)
 
-def analise_repeticao():
-    repetido = 0
-    for r in range(len(veiculos)):
-        nome_atual = veiculos[r][0]
-        veiculos.pop(r)
-        for v in range(len(veiculos)):
-            if nome_atual == veiculos[v][0]:
-                repetido += 1
-                print(nome_atual)
-    print(repetido)
-
+total = len(veiculos)
 
 def analise_manutencao(val,b):
     if val[b][1] >= 5000.00:
@@ -51,7 +41,20 @@ def analise_eficiencia(val, b):
     print(analise_manutencao(veiculos, a))
 '''
 
-analise_repeticao()
+
+repetido = 0
+for r in range(len(veiculos)):
+    lista_de_veiculos = list()
+    veiculos_copia = veiculos[:]
+    nome_atual = veiculos[r][0]
+    for v in range(len(lista_de_veiculos)):
+        print(lista_de_veiculos[v][0])
+        print(nome_atual)
+        if nome_atual == lista_de_veiculos[v][0]:
+            repetido += 1
+            print(repetido)
+
+
 
 
 
