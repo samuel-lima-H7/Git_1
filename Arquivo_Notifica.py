@@ -1,4 +1,8 @@
 #ENVIA CRONOGRAMA PARA O EMAIL
+
+import csv
+import os
+
 quant =  int(input("Digite o numero de tarefa que deseja fazer hoje: "))
 lista_tarefa =  list()
 
@@ -13,8 +17,11 @@ for c in range(quant):
 
     lista_tarefa.append(dados)
 
-for i in range(len(lista_tarefa)):
-    print("-=" * 20)
-    print(f"horario: {lista_tarefa[i][0]}")
-    print(f"tarefa: {lista_tarefa[i][1]}")
-    print("-=" * 20)
+with open("C:/Users/user/Desktop/Programação/teste programação.csv","w", newline="", encoding="utf-8-sig") as arquivo:
+    planilha = csv.writer(arquivo, delimiter=";")
+    planilha.writerow(["hora", "tarefa"])
+
+    for c in lista_tarefa:
+        planilha.writerow([c[0], c[1]])
+
+
