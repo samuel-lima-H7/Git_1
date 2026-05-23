@@ -28,5 +28,14 @@ def armazena():
         for a in lista_tarefa[1:]:
             planilha.writerow([lista_tarefa[0], a[0], a[1]])
 
+def leitura():
+    with open("C:/Users/user/Desktop/Programação/teste programação.csv", "r", newline="", encoding="utf-8-sig") as conteudo:
+        info_arquivo = csv.reader(conteudo, delimiter=";")
+        for coluna, valor in enumerate(info_arquivo):
+            if coluna == 0:
+                continue
+
+
 info()
 armazena()
+leitura()
