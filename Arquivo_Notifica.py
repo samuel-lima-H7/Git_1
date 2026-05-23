@@ -34,6 +34,8 @@ def leitura():
         for coluna, valor in enumerate(info_arquivo):
             if coluna == 0:
                 continue
+            dia_atual = valor[0]
+            print(dia_atual)
 
 
 info()
