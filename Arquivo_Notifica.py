@@ -1,7 +1,11 @@
 #ENVIA CRONOGRAMA PARA O EMAIL
 
 from _datetime import datetime
+import locale
 import csv
+locale.setlocale(locale.LC_TIME, 'pt_BR.UTF-8')
+data = datetime.now()
+hoje = data.strftime("%A")
 
 
 quant =  int(input("Digite o numero de tarefa que deseja fazer hoje: "))
@@ -19,7 +23,6 @@ def info():
         dados.append(hora)
         dados.append(compromisso)
         lista_tarefa.append(dados)
-
 def armazena():
     with open("C:/Users/user/Desktop/Programação/teste programação.csv","w", newline="", encoding="utf-8-sig") as arquivo:
         planilha = csv.writer(arquivo, delimiter=";")
@@ -35,6 +38,8 @@ with open("C:/Users/user/Desktop/Programação/teste programação.csv", "r", ne
             continue
         dia_atual = valor[0]
         print(dia_atual)
+
+
 
 
 info()
