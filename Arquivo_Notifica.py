@@ -3,10 +3,10 @@
 from _datetime import datetime
 import locale
 import csv
+
 locale.setlocale(locale.LC_TIME, 'pt_BR.UTF-8')
 data = datetime.now()
 hoje = data.strftime("%A")
-
 
 quant =  int(input("Digite o numero de tarefa que deseja fazer hoje: "))
 dia =  input("Digite o dia da semana do qual a tarefa fará parte: ")
@@ -30,17 +30,18 @@ def armazena():
 
         for a in lista_tarefa[1:]:
             planilha.writerow([lista_tarefa[0], a[0], a[1]])
-
-with open("C:/Users/user/Desktop/Programação/teste programação.csv", "r", newline="", encoding="utf-8-sig") as conteudo:
-    info_arquivo = csv.reader(conteudo, delimiter=";")
-    for coluna, valor in enumerate(info_arquivo):
-        if coluna == 0:
-            continue
-        dia_atual = valor[0]
-        print(dia_atual)
-
+def leitura():
+    with open("C:/Users/user/Desktop/Programação/teste programação.csv", "r", newline="", encoding="utf-8-sig") as conteudo:
+        info_arquivo = csv.reader(conteudo, delimiter=";")
+        for coluna, valor in enumerate(info_arquivo):
+            if coluna == 0:
+                continue
+            dia_atual = str(valor[0].lower().strip())
+            if dia_atual == hoje:
+                print(f"Hoje é: {dia_atual}")
 
 
 
 info()
 armazena()
+leitura()
