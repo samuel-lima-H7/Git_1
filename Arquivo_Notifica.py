@@ -4,12 +4,15 @@ from _datetime import datetime
 import locale
 import csv
 
-locale.setlocale(locale.LC_TIME, 'pt_BR.UTF-8')
+locale.setlocale(locale.LC_TIME, 'Portuguese_Brazil.1252')
 data = datetime.now()
 hoje = data.strftime("%A")
+data_atual = hoje[0:hoje.find("-")]
 
 quant =  int(input("Digite o numero de tarefa que deseja fazer hoje: "))
 dia =  input("Digite o dia da semana do qual a tarefa fará parte: ")
+
+
 lista_tarefa =  list()
 
 def info():
@@ -36,9 +39,9 @@ def leitura():
         for coluna, valor in enumerate(info_arquivo):
             if coluna == 0:
                 continue
-            dia_atual = str(valor[0].lower().strip())
-            if dia_atual == hoje:
-                print(f"Hoje é: {dia_atual}")
+            dia_inserido = str(valor[0].lower().strip())
+            if dia_inserido == data_atual:
+                print(f"Hoje é: {data_atual}")
 
 
 
