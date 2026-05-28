@@ -8,12 +8,14 @@ locale.setlocale(locale.LC_TIME, 'Portuguese_Brazil.1252')
 data = datetime.now()
 hoje = data.strftime("%A")
 data_atual = hoje[0:hoje.find("-")]
+dados = list()
 
 quant =  int(input("Digite o numero de tarefa que deseja fazer hoje: "))
 dia =  input("Digite o dia da semana do qual a tarefa fará parte: ")
 
 
 lista_tarefa =  list()
+
 
 def info():
     lista_tarefa.append(dia)
@@ -27,24 +29,33 @@ def info():
         dados.append(compromisso)
         lista_tarefa.append(dados)
 def armazena():
-    with open("C:/Users/user/Desktop/Programação/teste programação.csv","w", newline="", encoding="utf-8-sig") as arquivo:
+    with open("C:/Users/user/Desktop/Programação/teste programação.csv","a", newline="", encoding="utf-8-sig") as arquivo:
         planilha = csv.writer(arquivo, delimiter=";")
-        planilha.writerow(["Dia da Semana","Hora", "Tarefa"])
-
         for a in lista_tarefa[1:]:
             planilha.writerow([lista_tarefa[0], a[0], a[1]])
+
 def leitura():
+    tarefas_hora = list()
     with open("C:/Users/user/Desktop/Programação/teste programação.csv", "r", newline="", encoding="utf-8-sig") as conteudo:
         info_arquivo = csv.reader(conteudo, delimiter=";")
-        for coluna, valor in enumerate(info_arquivo):
-            if coluna == 0:
+        for linha, valor in enumerate(info_arquivo):
+            tarefas_hora = list()
+            if linha == 0:
                 continue
             dia_inserido = str(valor[0].lower().strip())
             if dia_inserido == data_atual:
-                print(f"Hoje é: {data_atual}")
+                tarefas_hora.append(valor[1])
+                tarefas_hora.append(valor[2])
+                dados.append(tarefas_hora)
 
 
-
+'''
 info()
 armazena()
+'''
+
 leitura()
+print(dados)
+
+for i in range(len(dados)):
+    print(f"Hoje é {hoje}, e às {dados[i][0]} você tem as seguintes tarefas: {dados[i][1]}.")
