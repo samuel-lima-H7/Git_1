@@ -9,31 +9,24 @@ data = datetime.now()
 hoje = data.strftime("%A")
 data_atual = hoje[0:hoje.find("-")]
 dados = list()
-
-quant =  int(input("Digite o numero de tarefa que deseja fazer hoje: "))
-dia =  input("Digite o dia da semana do qual a tarefa fará parte: ")
-
-
 lista_tarefa =  list()
 
-
-def info():
-    lista_tarefa.append(dia)
+def info(parametro):
+    lista_tarefa.append(parametro)
     for c in range(quant):
-        dados  = list()
+        dados1  = list()
         print("-="*20)
         hora = input("Digite o inicio do compromisso: ")
         compromisso = input("Digite o compromisso: ")
         print("-=" * 20)
-        dados.append(hora)
-        dados.append(compromisso)
+        dados1.append(hora)
+        dados1.append(compromisso)
         lista_tarefa.append(dados)
 def armazena():
     with open("C:/Users/user/Desktop/Programação/teste programação.csv","a", newline="", encoding="utf-8-sig") as arquivo:
         planilha = csv.writer(arquivo, delimiter=";")
         for a in lista_tarefa[1:]:
             planilha.writerow([lista_tarefa[0], a[0], a[1]])
-
 def leitura():
     tarefas_hora = list()
     with open("C:/Users/user/Desktop/Programação/teste programação.csv", "r", newline="", encoding="utf-8-sig") as conteudo:
@@ -48,11 +41,12 @@ def leitura():
                 tarefas_hora.append(valor[2])
                 dados.append(tarefas_hora)
 
-
-'''
-info()
-armazena()
-'''
+entrada_de_dados = str(input("deseja inserir alguma informação no arquivo")).lower().split( )
+if entrada_de_dados[0] == "s":
+    quant =  int(input("Digite o numero de tarefa que deseja fazer hoje: "))
+    dia =  input("Digite o dia da semana do qual a tarefa fará parte: ")
+    info(dia)
+    armazena()
 
 leitura()
 print(dados)
