@@ -1,17 +1,18 @@
 #ENVIA CRONOGRAMA PARA O EMAIL
 
-from _datetime import datetime
+from datetime import datetime
 import locale
 import csv
+from os.path import split
 
 locale.setlocale(locale.LC_TIME, 'Portuguese_Brazil.1252')
 data = datetime.now()
 hoje = data.strftime("%A")
-data_atual = hoje[0:hoje.find("-")]
+data_atual = hoje.split("-")[0]
 dados = list()
 lista_tarefa =  list()
 
-def info(parametro):
+def info(parametro, quantidade):
     lista_tarefa.append(parametro)
     for c in range(quant):
         dados1  = list()
@@ -21,7 +22,7 @@ def info(parametro):
         print("-=" * 20)
         dados1.append(hora)
         dados1.append(compromisso)
-        lista_tarefa.append(dados)
+        lista_tarefa.append(dados1)
 def armazena():
     with open("C:/Users/user/Desktop/Programação/teste programação.csv","a", newline="", encoding="utf-8-sig") as arquivo:
         planilha = csv.writer(arquivo, delimiter=";")
@@ -40,16 +41,13 @@ def leitura():
                 tarefas_hora.append(valor[1])
                 tarefas_hora.append(valor[2])
                 dados.append(tarefas_hora)
+    return dados
 
-entrada_de_dados = str(input("deseja inserir alguma informação no arquivo")).lower().split( )
+entrada_de_dados = str(input("deseja inserir alguma informação no arquivo: ")).lower().strip()
 if entrada_de_dados[0] == "s":
     quant =  int(input("Digite o numero de tarefa que deseja fazer hoje: "))
     dia =  input("Digite o dia da semana do qual a tarefa fará parte: ")
-    info(dia)
+    info(dia, quant)
     armazena()
 
-leitura()
-print(dados)
-
-for i in range(len(dados)):
-    print(f"Hoje é {hoje}, e às {dados[i][0]} você tem as seguintes tarefas: {dados[i][1]}.")
+tarefas_lista = list()
