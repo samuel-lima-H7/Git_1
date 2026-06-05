@@ -9,7 +9,6 @@ locale.setlocale(locale.LC_TIME, 'Portuguese_Brazil.1252')
 data = datetime.now()
 hoje = data.strftime("%A")
 data_atual = hoje.split("-")[0]
-dados = list()
 lista_tarefa =  list()
 
 def info(parametro, quantidade):
@@ -29,6 +28,7 @@ def armazena():
         for a in lista_tarefa[1:]:
             planilha.writerow([lista_tarefa[0], a[0], a[1]])
 def leitura():
+    dados = list()
     tarefas_hora = list()
     with open("C:/Users/user/Desktop/Programação/teste programação.csv", "r", newline="", encoding="utf-8-sig") as conteudo:
         info_arquivo = csv.reader(conteudo, delimiter=";")
@@ -43,11 +43,10 @@ def leitura():
                 dados.append(tarefas_hora)
     return dados
 
-entrada_de_dados = str(input("deseja inserir alguma informação no arquivo: ")).lower().strip()
-if entrada_de_dados[0] == "s":
-    quant =  int(input("Digite o numero de tarefa que deseja fazer hoje: "))
-    dia =  input("Digite o dia da semana do qual a tarefa fará parte: ")
-    info(dia, quant)
-    armazena()
-
-tarefas_lista = list()
+if  __name__ == "__main__":
+    entrada_de_dados = str(input("deseja inserir alguma informação no arquivo: ")).lower().strip()
+    if entrada_de_dados[0] == "s":
+        quant =  int(input("Digite o numero de tarefa que deseja fazer hoje: "))
+        dia =  input("Digite o dia da semana do qual a tarefa fará parte: ")
+        info(dia, quant)
+        armazena()
